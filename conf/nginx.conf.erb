@@ -2,6 +2,10 @@
 worker_processes      1;
 daemon off;
 
+location ~* \.(eot|ttf|woff)$ {
+    add_header Access-Control-Allow-Origin *;
+}
+
 events {
   worker_connections  1024;
 }

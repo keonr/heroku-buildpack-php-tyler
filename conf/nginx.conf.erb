@@ -88,7 +88,10 @@ http {
  
 }
 	
-	
+	location ~* \.(eot|ttf|woff)$ {
+    add_header Access-Control-Allow-Origin *;
+	}
+
     # Some basic cache-control for static files to be sent to the browser
     location ~* \.(?:ico|css|js|gif|jpeg|jpg|png)$ {
       expires         max;

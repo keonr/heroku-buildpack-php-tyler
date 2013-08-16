@@ -160,6 +160,7 @@ fi
 
 mkdir -p ${BUILD_DIR}/vendor/php
 tar xzf ${PHP_FILE} -C ${BUILD_DIR}/vendor/php
+apt-get install imagemagick
 
 # newrelic
 echo "-----> Installing newrelic"

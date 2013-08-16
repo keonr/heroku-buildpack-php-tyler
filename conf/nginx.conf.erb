@@ -78,7 +78,7 @@ http {
       access_log   off;
     }
 	location / {
-		rewrite  ^(.*)\..*$  profile.html?id=$1  break;
+		rewrite  ^(.*)$  profile.html?id=$1  break;
 		return   403;
 	}
     #location / {

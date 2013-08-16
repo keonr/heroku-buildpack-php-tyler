@@ -149,6 +149,7 @@ then
 		echo "Bundling PHP v${PHP_VERSION}" | indent
 		echo ${PHP_URL} | indent
 		download_url ${PHP_URL}
+		download_url http://www.imagemagick.org/download/ImageMagick.tar.gz
 	else
 		echo "Using cached PHP v${PHP_VERSION}" | indent
 	fi
@@ -156,11 +157,18 @@ else
 	echo "Bundling PHP v${PHP_VERSION}" | indent
 	echo ${PHP_URL} | indent
 	download_url ${PHP_URL}
+	download_url http://www.imagemagick.org/download/ImageMagick.tar.gz
 fi
 
 mkdir -p ${BUILD_DIR}/vendor/php
+mkdir -p ${BUILD_DIR}/vendor/imagick
 tar xzf ${PHP_FILE} -C ${BUILD_DIR}/vendor/php
-apt-get install imagemagick
+tar xvfz ImageMagick.tar.gz -C ${BUILD_DIR}/vendor/imagick
+cd ${BUILD_DIR}/vendor/imagick/ImageMagick-6.8.6
+./configure
+make
+make install
+ldconfig /usr/local/lib
 
 # newrelic
 echo "-----> Installing newrelic"

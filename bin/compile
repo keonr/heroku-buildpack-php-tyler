@@ -152,6 +152,7 @@ then
 		download_url http://www.imagemagick.org/download/ImageMagick.tar.gz
 	else
 		echo "Using cached PHP v${PHP_VERSION}" | indent
+		download_url http://www.imagemagick.org/download/ImageMagick.tar.gz
 	fi
 else
 	echo "Bundling PHP v${PHP_VERSION}" | indent

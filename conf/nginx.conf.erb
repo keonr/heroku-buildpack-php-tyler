@@ -79,7 +79,7 @@ http {
     }
     
 	location / {
-		rewrite ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ /profile.html?id=$2 last;
+		rewrite ^(?!(/images/|/))(.*)$ /profile.html?id=$2 break;
 		return   403;
 	}
     #location / {

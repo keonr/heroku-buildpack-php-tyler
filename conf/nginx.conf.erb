@@ -108,15 +108,5 @@ http {
       fastcgi_pass    php_fpm;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
-    location ~ .*\.html$ {
-    	try_files $uri =404;
-    }
-    location ~ /images$ {
-		try_files $uri =404;
-    }
-	location / {
-	 	rewrite ^(.*)$ profile.html?id=$2 break;
-	 	return   403;
-	}
   }
 }

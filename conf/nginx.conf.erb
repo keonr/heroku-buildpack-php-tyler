@@ -77,6 +77,7 @@ http {
       stub_status on;
       access_log   off;
     }
+    #Location routing for user accounts
     location = / {
     break;
     }
@@ -86,6 +87,7 @@ http {
 		rewrite ^(.*)$ $1 break;
 		return   403;
 	}
+	#end location routing for user accounts
     #location / {
     #  # wordpress fancy rewrites
     #  if (-f $request_filename) {

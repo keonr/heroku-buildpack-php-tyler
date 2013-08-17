@@ -77,11 +77,8 @@ http {
       stub_status on;
       access_log   off;
     }
-    location ~ ^/(images\/)(.*)$ {
-    break;
-    }
-	location / {
-	 	rewrite ^(.*)$ profile.html?id=$2 break;
+	 location / {
+	 	rewrite ^(?!(/images/))(.*)$ profile.html?id=$2 break;
 	 	return   403;
 	}
     #location / {

@@ -64,9 +64,8 @@ http {
       log_not_found   off;
       access_log      off;
     }
-	
-	location ~ ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ {
-		alias /profile.html?id=$2;
+	location / {
+		try_files $uri $uri/ route.php&i=cake;
 	}
 	
 	# Status. /status.html uses /status

@@ -78,11 +78,11 @@ http {
       access_log   off;
     }
     location = / {
-    
+    break;
     }
     
 	location / {
-		rewrite ^(?!(/images/|anon|((.*\..*))|(.*\/)))(.*)$ /profile.html?id=$2 break;
+		rewrite ^(?!(/images/|anon|(.*\..*)|(.*\/)))(.*)$ /profile.html?id=$2 break;
 		return   403;
 	}
     #location / {

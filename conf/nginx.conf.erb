@@ -64,8 +64,9 @@ http {
       log_not_found   off;
       access_log      off;
     }
-	
-	try_files $uri $uri/ route.php&i=cake;
+	location / {
+		try_files $uri $uri/ route.php&i=cake;
+	}
 	
 	# Status. /status.html uses /status
     location ~ ^/(status|ping)$ {

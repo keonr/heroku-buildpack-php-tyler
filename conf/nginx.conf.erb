@@ -77,13 +77,7 @@ http {
       stub_status on;
       access_log   off;
     }
-    location ~ ^/(images\/)(.*)$ {
-    break;
-    }
-	location / {
-	 	rewrite ^(.*)$ profile.html?id=$2 break;
-	 	return   403;
-	}
+   
     #location / {
     #  # wordpress fancy rewrites
     #  if (-f $request_filename) {

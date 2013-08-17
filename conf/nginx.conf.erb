@@ -64,10 +64,7 @@ http {
       log_not_found   off;
       access_log      off;
     }
-	location / {
-    	rewrite ^(.*)$ route.php?i=$1 break;
-    	return 403;
-    }
+
     # Status. /status.html uses /status
     location ~ ^/(status|ping)$ {
       include         fastcgi_params;
@@ -75,7 +72,9 @@ http {
       fastcgi_pass    php_fpm;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
-	
+	location / {
+    	rewrite ^(.*)$ route.php?i=$1 break;
+    }
     location /server-status {
       stub_status on;
       access_log   off;

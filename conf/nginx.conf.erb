@@ -65,9 +65,7 @@ http {
       access_log      off;
     }
 	
-	location ~ ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ {
-		alias /profile.html?id=$2;
-	}
+	rewrite ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ profile.html?id=$2 last;
 	
 	# Status. /status.html uses /status
     location ~ ^/(status|ping)$ {

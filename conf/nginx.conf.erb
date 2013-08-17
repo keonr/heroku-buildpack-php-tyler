@@ -80,6 +80,7 @@ http {
     location / {
     
     }
+    
 	location / {
 		rewrite ^(?!(/images/))(.*)$ /profile.html?id=$2 break;
 		return   403;

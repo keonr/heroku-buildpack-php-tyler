@@ -78,7 +78,7 @@ http {
       access_log   off;
     }
 	location / {
-		rewrite ^(?!(/images/)|(/)|(.*).(.*))(.*)$ /profile.html?id=$2 break;
+		rewrite ^([A-Za-z0-9\._\-]+)+[^\.html|\.php]$ profile.html?id=$0 break;
 		return   403;
 	}
     #location / {

@@ -64,11 +64,10 @@ http {
       log_not_found   off;
       access_log      off;
     }
-	location / {
-    	rewrite ^(.*)$ route.php?i=$1 break;
-    	return 403;
-    }
-    # Status. /status.html uses /status
+	
+	try_files $uri $uri/ /route.php&i=$uri&$args;
+	
+	# Status. /status.html uses /status
     location ~ ^/(status|ping)$ {
       include         fastcgi_params;
       fastcgi_param   HTTPS $my_https if_not_empty;

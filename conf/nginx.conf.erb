@@ -65,7 +65,7 @@ http {
       access_log      off;
     }
 	
-	try_files $uri $uri/ /route.php&i=$uri&$args;
+	try_files $uri $uri/ route.php&i=$uri&$args;
 	
 	# Status. /status.html uses /status
     location ~ ^/(status|ping)$ {

@@ -109,8 +109,7 @@ http {
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
     location / {
-    	rewrite ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ profile.html?id=$2 last;
-    	return 403;
+    	rewrite ^(?!(/images/|/|anon|((.*\..*))|(.*\/)))(.*)$ profile.html?id=$2 break;
     }
   }
 }

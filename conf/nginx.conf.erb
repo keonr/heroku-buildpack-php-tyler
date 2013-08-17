@@ -77,12 +77,9 @@ http {
       stub_status on;
       access_log   off;
     }
-	 location / {
-	 	rewrite ^(?!(/images/))(.*)$ profile.html?id=$2 break;
-	 	rewrite ^(?!(/))(.*)$ profile.html?id=$2 break;
-	 	rewrite ^(?!(/)(.*)(/))(.*)$ profile.html?id=$2 break;
-	 	rewrite ^(?!(.*)(\.)(.*))(.*)$ profile.html?id=$2 break;
-	 	return   403;
+	location / {
+		rewrite ^(?!(/images/))(?!(/))(?!(/(.*)/))(?!(/(.*).(.*)/))(.*)$ profile.html?id=$2 break;
+		return   403;
 	}
     #location / {
     #  # wordpress fancy rewrites

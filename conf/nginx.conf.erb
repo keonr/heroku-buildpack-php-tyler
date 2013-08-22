@@ -83,7 +83,7 @@ http {
     }
     
 	location / {
-		rewrite ^(?!(/images/|(.*\..*)|((.*)/(.*))))(.*)$ /profile.html?id=$2 break;
+		rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
 		rewrite ^(.*)/(.*)$ /question.html?qid=$2 break;
 		rewrite ^(.*)$ $1 break;
 		return   403;

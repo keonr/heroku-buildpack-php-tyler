@@ -84,7 +84,6 @@ http {
     
 	location / {
 		rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
-		rewrite ^([a-zA-Z0-9/])(.*)$ /question.html?qid=$2 break;
 		rewrite ^(.*)$ $1 break;
 		return   403;
 	}

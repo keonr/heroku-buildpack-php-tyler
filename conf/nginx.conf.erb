@@ -72,27 +72,40 @@ http {
       fastcgi_pass    php_fpm;
       fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
-	add_header Access-Control-Allow-Origin *;
-	add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, HEAD, OPTIONS";
-	add_header Access-Control-Allow-Headers *;
-	add_header Access-Control-Allow-Credentials true;
-	add_header Access-Control-Max_age 1;
-
-if ($request_method = 'OPTIONS') {
-        add_header "Content-Type" "text/plain; charset=UTF-8";
-        add_header "Content-Length" "0";
-        return 200;
-}
     location /server-status {
       stub_status on;
       access_log   off;
     }
     #Location routing for user accounts
-    location = / 
+    location = / {
+    add_header Access-Control-Allow-Origin *;
+	add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, HEAD, OPTIONS";
+	add_header Access-Control-Allow-Headers *;
+	add_header Access-Control-Allow-Credentials true;
+	add_header Access-Control-Max_age 1;
+
+	if ($request_method = 'OPTIONS') {
+        add_header "Content-Type" "text/plain; charset=UTF-8";
+        add_header "Content-Length" "0";
+        return 200;
+	}
+
     break;
     }
     
 	location / {
+		add_header Access-Control-Allow-Origin *;
+		add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, HEAD, OPTIONS";
+		add_header Access-Control-Allow-Headers *;
+		add_header Access-Control-Allow-Credentials true;
+		add_header Access-Control-Max_age 1;
+
+		if ($request_method = 'OPTIONS') {
+        add_header "Content-Type" "text/plain; charset=UTF-8";
+        add_header "Content-Length" "0";
+        return 200;
+		}
+
 		rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
 		rewrite ^(.*)$ $1 break;
 		return   403;

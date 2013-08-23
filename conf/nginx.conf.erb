@@ -110,7 +110,7 @@ http {
     #}
 
     include /app/conf/nginx.d/*.conf;
-    include *.conf;
+    
 
     location ~ .*\.php$ {
       try_files $uri =404;

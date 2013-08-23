@@ -79,10 +79,12 @@ http {
     }
     #Location routing for user accounts
     location = / {
+    add_header Access-Control-Allow-Origin *;
     break;
     }
     
 	location / {
+		add_header Access-Control-Allow-Origin *;
 		rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
 		rewrite ^(.*)$ $1 break;
 		return   403;

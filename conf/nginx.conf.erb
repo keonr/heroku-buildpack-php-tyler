@@ -93,8 +93,9 @@ http {
 	} 
 
 	location @rules { 
+	rewrite ^/(.*)/(.*)$ /question.html?qid=$2;
     rewrite ^/(.*)$ /profile.html?id=$1; 
-    rewrite ^/(.*)/(.*)$ /question.html?qid=$2; 
+    
 	}
 	
 	#end location routing for user accounts

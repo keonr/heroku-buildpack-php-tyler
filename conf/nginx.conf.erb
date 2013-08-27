@@ -94,7 +94,7 @@ http {
 
 	location @rules { 
     rewrite ^/(.*)$ /profile.html?id=$1; 
-    rewrite ^/([a-z]*)/(.*)$ /question.html?qid=$2; 
+    rewrite ^/(.*)/(.*)$ /question.html?qid=$2; 
 	}
 	
 	#end location routing for user accounts

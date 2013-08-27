@@ -82,10 +82,19 @@ http {
       break;
     }
     
-	location / {
-		rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
-		rewrite ^(.*)$ $1 break;
-		return   403;
+	#location / {
+	#	rewrite ^(?!(/images/|(.*\..*)))(.*)$ /profile.html?id=$2 break;
+	#	rewrite ^(.*)$ $1 break;
+	#	return   403;
+	#}
+	
+	location / { 
+    try_files $uri $uri/ @rules; 
+	} 
+
+	location @rules { 
+    rewrite ^/(.*)$ /profile.html?id=$1; 
+    rewrite ^/([a-z]*)/(.*)$ /question.html?qid=$2; 
 	}
 	
 	#end location routing for user accounts

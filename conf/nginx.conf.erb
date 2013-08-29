@@ -94,7 +94,7 @@ http {
 
 	location @rules { 
     rewrite ^/(?!(.*/))(.*)$ /show_profile.php?id=$2; 
-    rewrite ^/(.*)/(.*)$ /show_question.php?qid=$2; 
+    rewrite ^/(?!(reset/.*/.*/)(.*)/(.*)$ /show_question.php?qid=$2; 
     rewrite ^/reset/(.*)/(.*)$ /password.php?m=reset&id=$1&token=$2;
 	}
 	
